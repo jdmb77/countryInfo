@@ -1,0 +1,33 @@
+/*
+* Projects: Country Information App
+* Author: GHirsch
+* Created: 10/13/2016
+*
+*/
+
+html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background: #fcfcfc;
+}
+
+#country-strip {
+	background: transparent url('../images/flags.png') repeat-x 0 0;
+	height: 53px;
+}
+
+#main {
+	width: 1024px;
+	margin: 50px auto;
+}
+
+#flag {
+	height: 100%;
+}
+
+#map {
+	width: 99%;
+	height: 500px;
+	display: block;
+}
