@@ -13,4 +13,4 @@
 ###Third party API's
 - Google Maps JavaScript API (https://developers.google.com/maps/)
 - http://api.geonames.org/searchJSON (country data)
-- https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/32/'+ country name here +'.png (flag icons)
+- https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/32/country_name_here.png (flag icons)
