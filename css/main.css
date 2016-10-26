@@ -6,28 +6,38 @@
 */
 
 html, body {
-	height: 100%;
-	padding: 0;
-	margin: 0;
-	background: #fcfcfc;
+	padding-top: 25px;
+	padding-bottom: 20px;
+  background-color: #f2f2f2;
+}
+
+/* Bootstrap overrides */
+.jumbotron {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+.navbar-inverse {
+	opacity: .9;
+}
+/* End overrides */
+
+#content {
+	border: 1px solid #eee;
+  border-radius: 1px;
+  background-color: #fff;
+  padding: 20px;
 }
 
 #country-strip {
 	background: transparent url('../images/flags.png') repeat-x 0 0;
 	height: 53px;
-}
-
-#main {
-	width: 1024px;
-	margin: 50px auto;
-}
-
-#flag {
-	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	opacity: .9;
 }
 
 #map {
-	width: 99%;
 	height: 500px;
-	display: block;
 }
