@@ -29,6 +29,14 @@ html, body {
   padding: 20px;
 }
 
+#contextMenu {
+  visibility: hidden;
+  width: 300px;
+  background: #fff;
+  border: 2px solid #ccc;
+  z-index: 999;
+}
+
 #country-strip {
 	background: transparent url('../images/flags.png') repeat-x 0 0;
 	height: 53px;

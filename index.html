@@ -1,68 +1,69 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <link rel="shortcut icon" href="favicon.ico" />
-        <title>World Country Information</title>
-        <!-- App Style resources -->
-        <link rel="stylesheet" href="css/jqx.base.css">
-        <link rel="stylesheet" href="css/jqx.bootstrap.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <!-- App Script resources -->
-        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-        <script src="js/vendor/moment.js"></script>
-        <script src="js/vendor/moment-timezone.js"></script>
-        <script src="js/vendor/jqx-all.js"></script>
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> World Country Information</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-
-            </div><!--/.navbar-collapse -->
-          </div>
-        </nav>
-
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
-            <div id="map"></div>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>World Country Information</title>
+    <!-- App Style resources -->
+    <link rel="stylesheet" href="css/jqx.base.css">
+    <link rel="stylesheet" href="css/jqx.bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- App Script resources -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="js/vendor/moment.js"></script>
+    <script src="js/vendor/moment-timezone.js"></script>
+    <script src="js/vendor/jqx-all.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> World Country Information</a>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
 
-        <!-- Example row of columns -->
-        <div class="container">
-            <div id="content">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="countryGrid"></div>
-                    </div>
-                </div>
-                <hr>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div id="map"></div>
+    </div>
 
-                <footer>
-                    <p>&copy; 2016 Company, Inc.</p>
-                </footer>
-            </div>
-        </div> <!-- /container -->            
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCMOJ7tMgYv_L27bb8KbI7USRivFvwrjro"></script>
-        <script src="js/main.js"></script>
-    </body>
+    <!-- Example row of columns -->
+    <div class="container">
+      <div id="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="countryGrid"></div>
+          </div>
+        </div>
+        <hr>
+
+        <footer>
+          <p>&copy; 2016 Company, Inc.</p>
+        </footer>
+      </div>
+    </div> <!-- /container -->
+     
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCMOJ7tMgYv_L27bb8KbI7USRivFvwrjro"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
