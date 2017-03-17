@@ -6,17 +6,17 @@
 * http://api.geonames.org/findNearByWeatherJSON
 */
 
-var APP = APP || (function($) {
-	// Global jqwidgets theme setting
-	$.jqx.theme = 'bootstrap';
-	
-	var appObj = {};
+(function ($) {
+  // Global jqwidgets theme setting
+  $.jqx.theme = 'bootstrap';
 
-	appObj.title = 'World Country Information';
-	appObj.version = 1.0;
+  let appObj = {};
 
-	// Retrieve country data from geonames api
-	appObj.source = {
+  appObj.title = 'World Country Information';
+  appObj.version = 1.0;
+
+  // Retrieve country data from geonames api
+  appObj.source = {
     datatype: 'jsonp',
     datafields: [
       { name: 'countryName', type: 'string' },
@@ -47,86 +47,86 @@ var APP = APP || (function($) {
   appObj.zoom;
   appObj.latlng = new google.maps.LatLng(38.907815, -77.042728);
   appObj.mapOptions = {
-  	zoom: 6,
-  	center: appObj.latlng,
-  	mapTypeId: google.maps.MapTypeId.ROADMAP
+    zoom: 6,
+    center: appObj.latlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
   // Create map
   appObj.map = new google.maps.Map(document.getElementById('map'), appObj.mapOptions);
 
-  appObj.contextMenu = google.maps.event.addListener(appObj.map, "rightclick", function(e) {
-    var lat = e.latLng.lat(),
-      lng = e.latLng.lng();
+  appObj.contextMenu = google.maps.event.addListener(appObj.map, "rightclick", (e) => {
+    let lat = e.latLng.lat();
+    let lng = e.latLng.lng();
 
     $('#navbar').html('<p class="navbar-right navbar-text">' +
-      '<span class="glyphicon glyphicon-screenshot"></span> '+ lat +', '+ lng +'</p>');
+      '<span class="glyphicon glyphicon-screenshot"></span> ' + lat + ', ' + lng + '</p>');
   });
 
   // Update map view 
-  appObj.updateMap = function(lat, lng, country, countryCode, city, continent, pop) {
-		appObj.map.panTo(new google.maps.LatLng(lat, lng));
+  appObj.updateMap = (lat, lng, country, countryCode, city, continent, pop) => {
+    appObj.map.panTo(new google.maps.LatLng(lat, lng));
 
-		var countryIcon = country;
+    let countryIcon = country;
 
-    if(/\s/.test(countryIcon)) {
-      countryIcon = countryIcon.replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"");   //Removes spaces
+    if (/\s/.test(countryIcon)) {
+      countryIcon = countryIcon.replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g, "");   //Removes spaces
       countryIcon = countryIcon.replace(/\s+/g, "-"); //Adds dash in place of space
     }
 
-		var iconContent = '<div style="width: 350px;">' +
-			'<ul class="list-group">' +
-				'<li class="list-group-item">' +
-				'<span class="badge">'+ country +'</span>' +
-					'<img src="https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/64/'+ countryIcon +'.png">' +
-				'</li>' +
-				'<li class="list-group-item">' +
-				'<span class="badge">'+ city +'</span>' +
-					'City' +
-				'</li>' +
-				'<li class="list-group-item">' +
-				'<span class="badge">'+ pop +'</span>' +
-					'Population' +
-				'</li>' +
-				'<li class="list-group-item">' +
-				'<span class="badge">'+ countryCode +'</span>' +
-					'Country Code' +
-				'</li>' +
-				'<li class="list-group-item">' +
-				'<span class="badge">'+ continent +'</span>' +
-					'Continent' +
-				'</li>' +
-				'<li class="list-group-item">' +
-				'<span class="badge">'+ lat +'</span>' +
-					'Latitude' +
-				'</li>' +
-				'<li class="list-group-item">' +
-				'<span class="badge">'+ lng +'</span>' +
-					'Longitude' +
-				'</li>' +
-			'</ul>' +
-		'</div>';
+    let iconContent = `<div style="width: 350px;">
+			<ul class="list-group">
+				<li class="list-group-item">
+				<span class="badge">${country}</span>
+					<img src="https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/64/${countryIcon}.png">
+				</li>
+				<li class="list-group-item">
+				<span class="badge">${city}</span>
+					City
+				</li>
+				<li class="list-group-item">
+				<span class="badge">${pop}</span>
+					Population
+				</li>
+				<li class="list-group-item">
+				<span class="badge">${countryCode}</span>
+					Country Code
+				</li>
+				<li class="list-group-item">
+				<span class="badge">${continent}</span>
+					Continent
+				</li>
+				<li class="list-group-item">
+				<span class="badge">${lat}</span>
+					Latitude
+				</li>
+				<li class="list-group-item">
+				<span class="badge">${lng}</span>
+					Longitude
+				</li>
+			</ul>
+		</div>`;
 
-		var infoWindow = new google.maps.InfoWindow({
-			content: iconContent
-		});
-
-		appObj.marker = new google.maps.Marker({
-    	position: new google.maps.LatLng(lat, lng),
-    	map: appObj.map,
-    	icon: {
-    		url: 'https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/32/'+ countryIcon +'.png',
-    		anchor: new google.maps.Point(16, 48)
-    	}
+    let infoWindow = new google.maps.InfoWindow({
+      content: iconContent
     });
 
-    appObj.marker.addListener('click', function() {
-    	infoWindow.open(appObj.map, appObj.marker);
+    appObj.marker = new google.maps.Marker({
+      position: new google.maps.LatLng(lat, lng),
+      map: appObj.map,
+      icon: {
+        url: `https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/32/${countryIcon}.png`,
+        anchor: new google.maps.Point(16, 48)
+      }
+    });
+
+    appObj.marker.addListener('click', () => {
+      infoWindow.open(appObj.map, appObj.marker);
     });
   }
 
   // Get weather information
-  appObj.weather = function(lat, lng) {
+  appObj.weather = (lat, lng) => {
     appObj.weatherSource = {
       datatype: 'jsonp',
       url: 'http://api.geonames.org/findNearByWeatherJSON',
@@ -138,18 +138,18 @@ var APP = APP || (function($) {
     };
 
     appObj.weatherAdapter = new $.jqx.dataAdapter(appObj.weatherSource, {
-      loadComplete: function () {
-        var data = appObj.weatherAdapter.records[0],
-          rec = data.weatherObservation,
-          CtoF = rec.temperature * 9 / 5 + 32;
+      loadComplete: () => {
+        let data = appObj.weatherAdapter.records[0];
+        let rec = data.weatherObservation;
+        let CtoF = rec.temperature * 9 / 5 + 32;
 
-        $('#navbar').html('<p class="navbar-right navbar-text">' +
-        '<span class="glyphicon glyphicon-fire" title="Temperature (F)"></span> '+ Math.round(CtoF) +
-        ' <span class="glyphicon glyphicon-tint" title="Humidity"></span> '+ rec.humidity +
-        ' <span class="glyphicon glyphicon-cloud" title="Current Condition"></span> '+ rec.clouds.toUpperCase() +
-        '</p>');
+        $('#navbar').html(`<p class="navbar-right navbar-text">
+          <span class="glyphicon glyphicon-fire" title="Temperature (F)"></span> ${Math.round(CtoF)}
+          <span class="glyphicon glyphicon-tint" title="Humidity"></span> ${rec.humidity}
+          <span class="glyphicon glyphicon-cloud" title="Current Condition"></span> ${rec.clouds.toUpperCase()}
+          </p>`);
       },
-      loadError: function (jqXHR, status, error) {
+      loadError: (jqXHR, status, error) => {
         console.log(jqXHR, status, error);
       }
     });
@@ -159,52 +159,53 @@ var APP = APP || (function($) {
 
   // Create country data grid
   $('#countryGrid').jqxGrid(
-  {
-    width: '100%',
-    source: appObj.dataAdapter,
-    columnsresize: true,
-    showfilterrow: true,
-    filterable: true,
-    pageable: true,
-    sortable: true,
-    altrows: true,
-    ready: function() {
-      $('#countryGrid').jqxGrid('selectrow', 0);
-    },
-    columns: [
-      { text: 'Country Name', datafield: 'countryName', filtertype: 'input' },
-      { text: 'City', datafield: 'name', filtertype: 'input' },
-      { text: 'Population', datafield: 'population', cellsformat: 'f', filtertype: 'number' },
-      { text: 'Country Code', datafield: 'countryCode', filtertype: 'input' },
-      { text: 'Date / Time', datafield: 'timeZoneId', filtertype: 'input',
-      	cellsrenderer: function(index, datafield, value, defaultvalue, column, rowdata) {
-      		var timedate = moment().tz(value),
-      			dateformat = timedate.format('YYYY-MM-DD') + " " + timedate.format('HH:mm:ss');
+    {
+      width: '100%',
+      source: appObj.dataAdapter,
+      columnsresize: true,
+      showfilterrow: true,
+      filterable: true,
+      pageable: true,
+      sortable: true,
+      altrows: true,
+      ready: () => {
+        $('#countryGrid').jqxGrid('selectrow', 0);
+      },
+      columns: [
+        { text: 'Country Name', datafield: 'countryName', filtertype: 'input' },
+        { text: 'City', datafield: 'name', filtertype: 'input' },
+        { text: 'Population', datafield: 'population', cellsformat: 'f', filtertype: 'number' },
+        { text: 'Country Code', datafield: 'countryCode', filtertype: 'input' },
+        {
+          text: 'Date / Time', datafield: 'timeZoneId', filtertype: 'input',
+          cellsrenderer: (index, datafield, value, defaultvalue, column, rowdata) => {
+            let timedate = moment().tz(value);
+            let dateformat = timedate.format('YYYY-MM-DD') + " " + timedate.format('HH:mm:ss');
 
-      		return '<div class="jqx-grid-cell-left-align" style="margin-top: 6px;">' + dateformat + '</div>';
-      	}
-      }
-    ]
-  });
+            return `<div class="jqx-grid-cell-left-align" style="margin-top: 6px;">${dateformat}</div>`;
+          }
+        }
+      ]
+    });
 
   // Fired upon selecting grid row
-  $('#countryGrid').on('rowselect', function(e) {
-  	var	row = e.args.row, 
-  		lat = parseFloat(row.lat),
-  		lng = parseFloat(row.lng),
-    	country = row.countryName,
-    	countryCode = row.countryCode,
-    	city = row.name,
-    	continent = row.continentCode,
-    	pop = row.population,
-    	pop = pop.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  $('#countryGrid').on('rowselect', (e) => {
+    let row = e.args.row;
+    let lat = parseFloat(row.lat);
+    let lng = parseFloat(row.lng);
+    let country = row.countryName;
+    let countryCode = row.countryCode;
+    let city = row.name;
+    let continent = row.continentCode;
+    let pop = row.population;
+    pop = pop.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-  	appObj.updateMap(lat, lng, country, countryCode, city, continent, pop);
+    appObj.updateMap(lat, lng, country, countryCode, city, continent, pop);
     appObj.weather(lat, lng);
   });
 
-	console.log('App Running');
-    
+  console.log('App Running');
+
   return appObj;
-    
+
 }($));
